@@ -1,0 +1,206 @@
+{
+  "info": {
+    "resource": "commonplayerinfo",
+    "parameters": [
+      {
+        "PlayerID": 203112
+      },
+      {
+        "LeagueID": null
+      }
+    ],
+    "resultSets": [
+      {
+        "name": "CommonPlayerInfo",
+        "headers": [
+          "PERSON_ID",
+          "FIRST_NAME",
+          "LAST_NAME",
+          "DISPLAY_FIRST_LAST",
+          "DISPLAY_LAST_COMMA_FIRST",
+          "DISPLAY_FI_LAST",
+          "PLAYER_SLUG",
+          "BIRTHDATE",
+          "SCHOOL",
+          "COUNTRY",
+          "LAST_AFFILIATION",
+          "HEIGHT",
+          "WEIGHT",
+          "SEASON_EXP",
+          "JERSEY",
+          "POSITION",
+          "ROSTERSTATUS",
+          "GAMES_PLAYED_CURRENT_SEASON_FLAG",
+          "TEAM_ID",
+          "TEAM_NAME",
+          "TEAM_ABBREVIATION",
+          "TEAM_CODE",
+          "TEAM_CITY",
+          "PLAYERCODE",
+          "FROM_YEAR",
+          "TO_YEAR",
+          "DLEAGUE_FLAG",
+          "NBA_FLAG",
+          "GAMES_PLAYED_FLAG",
+          "DRAFT_YEAR",
+          "DRAFT_ROUND",
+          "DRAFT_NUMBER",
+          "GREATEST_75_FLAG"
+        ],
+        "rowSet": [
+          [
+            203112,
+            "Quincy",
+            "Acy",
+            "Quincy Acy",
+            "Acy, Quincy",
+            "Q. Acy",
+            "quincy-acy",
+            "1990-10-06T00:00:00",
+            "Baylor",
+            "USA",
+            "Baylor/USA",
+            "6-7",
+            "240",
+            7,
+            "",
+            "Forward",
+            "Inactive",
+            "N",
+            0,
+            "",
+            "",
+            "",
+            "",
+            "quincy_acy",
+            2012,
+            2018,
+            "Y",
+            "Y",
+            "Y",
+            "2012",
+            "2",
+            "37",
+            "N"
+          ]
+        ]
+      },
+      {
+        "name": "PlayerHeadlineStats",
+        "headers": [
+          "PLAYER_ID",
+          "PLAYER_NAME",
+          "TimeFrame",
+          "PTS",
+          "AST",
+          "REB",
+          "ALL_STAR_APPEARANCES"
+        ],
+        "rowSet": [[203112, "Quincy Acy", "career", 4.9, 0.6, 3.5, 0]]
+      },
+      {
+        "name": "AvailableSeasons",
+        "headers": ["SEASON_ID"],
+        "rowSet": [
+          ["12012"],
+          ["22012"],
+          ["12013"],
+          ["22013"],
+          ["12014"],
+          ["22014"],
+          ["12015"],
+          ["22015"],
+          ["12016"],
+          ["22016"],
+          ["12017"],
+          ["22017"],
+          ["22018"]
+        ]
+      }
+    ]
+  },
+  "awards": {
+    "resource": "playerawards",
+    "parameters": {
+      "PlayerID": 203112
+    },
+    "resultSets": [
+      {
+        "name": "PlayerAwards",
+        "headers": [
+          "PERSON_ID",
+          "FIRST_NAME",
+          "LAST_NAME",
+          "TEAM",
+          "DESCRIPTION",
+          "ALL_NBA_TEAM_NUMBER",
+          "SEASON",
+          "MONTH",
+          "WEEK",
+          "CONFERENCE",
+          "TYPE",
+          "SUBTYPE1",
+          "SUBTYPE2",
+          "SUBTYPE3"
+        ],
+        "rowSet": []
+      }
+    ]
+  },
+  "stats": {
+    "headers": [
+      "PLAYER_ID",
+      "LEAGUE_ID",
+      "Team_ID",
+      "GP",
+      "GS",
+      "MIN",
+      "FGM",
+      "FGA",
+      "FG_PCT",
+      "FG3M",
+      "FG3A",
+      "FG3_PCT",
+      "FTM",
+      "FTA",
+      "FT_PCT",
+      "OREB",
+      "DREB",
+      "REB",
+      "AST",
+      "STL",
+      "BLK",
+      "TOV",
+      "PF",
+      "PTS"
+    ],
+    "data": [
+      [
+        203112,
+        "00",
+        0,
+        337,
+        60,
+        16.0,
+        1.7,
+        3.9,
+        0.444,
+        0.5,
+        1.6,
+        0.35,
+        0.9,
+        1.1,
+        0.759,
+        0.9,
+        2.6,
+        3.5,
+        0.6,
+        0.4,
+        0.4,
+        0.6,
+        2.0,
+        4.9
+      ]
+    ]
+  }
+}
