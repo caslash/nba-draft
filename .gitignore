@@ -64,3 +64,5 @@ fastlane/test_output
 .DS_Store
 */__pycache__/
 *.sqlite
+api/*.json
+api/test.py
