@@ -10,10 +10,7 @@ import Foundation
 import Observation
 
 public protocol IDataService {
-    var message: String? { get set }
-    
-    func fetchResponse()
-    func fetchNameResponse(name: String)
+    func fetchPlayerTeams(player_id: Player.ID, completion: @escaping ([Team.ID]) -> Void)
 }
 
 @Observable
@@ -32,27 +29,23 @@ public class DataService: IDataService {
         return request
     }
     
-    public var message: String?
-    
-    public func fetchResponse() {
-        let request = createRequest(path: "", method: "GET")
+    public func fetchPlayerTeams(player_id: Player.ID, completion: @escaping ([Team.ID]) -> Void) {
+        let request = createRequest(path: "/\(player_id)/teams", method: "GET")
         
         URLSession.shared.dataTaskPublisher(for: request)
             .map(\.data)
-            .decode(type: Response.self, decoder: JSONDecoder())
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { print("completion: \($0)") }, receiveValue: { self.message = $0.message })
+            .decode(type: PlayerTeamsResponse.self, decoder: JSONDecoder())
+            .eraseToAnyPublisher()
+            .sink(receiveCompletion: { _ in }, receiveValue: {
+                completion($0.player_team_history)
+            })
             .store(in: &cancellables)
     }
-    
-    public func fetchNameResponse(name: String) {
-        let request = createRequest(path: "/hello", method: "GET", queryParams: URLQueryItem(name: "name", value: name))
-        
-        URLSession.shared.dataTaskPublisher(for: request)
-            .map(\.data)
-            .decode(type: Response.self, decoder: JSONDecoder())
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { print("completion: \($0)") }, receiveValue: { self.message = $0.message })
-            .store(in: &cancellables)
+}
+
+extension DataService {
+    private struct PlayerTeamsResponse: Decodable {
+        var player_id: Player.ID
+        var player_team_history: [Team.ID]
     }
 }

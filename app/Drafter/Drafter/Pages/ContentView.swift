@@ -16,6 +16,11 @@ struct ContentView: View {
             
             Text(self.viewModel.player != nil ? "\(self.viewModel.player!.full_name)" : "No Player Found")
             
+            Text("Teams:")
+            
+            Text(self.viewModel.teams.map{ return $0.full_name }.joined(separator: " -> "))
+                .multilineTextAlignment(.center)
+            
             Button {
                 self.viewModel.fetchRandomPlayer()
             } label: {

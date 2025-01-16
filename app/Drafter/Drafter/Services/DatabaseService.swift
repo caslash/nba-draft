@@ -15,6 +15,7 @@ public protocol IDatabaseService {
     init()
     
     func getRandomPlayer() -> Player
+    func getPlayerTeamsFromID(_ teams: [Team.ID]) -> [Team]
 }
 
 @Observable
@@ -75,6 +76,31 @@ public class DatabaseService: IDatabaseService {
             return player
         } catch {
             fatalError("Error fetching random player: \(error.localizedDescription)")
+        }
+    }
+    
+    public func getPlayerTeamsFromID(_ teams: [Team.ID]) -> [Team] {
+        let formattedTeams = teams.map { return "('\($0)')" }.joined(separator: ",")
+        
+        do {
+            var teams: [Team] = []
+            try dbQueue.read { db in
+                teams = try Team.fetchAll(
+                    db,
+                    sql: """
+                        WITH id_array(id) AS (
+                            VALUES
+                            \(formattedTeams)
+                        )
+                        SELECT * FROM id_array
+                        JOIN team ON id_array.id = team.id
+                        """
+                )
+            }
+            
+            return teams
+        } catch {
+            fatalError("Error fetching teams: \(error.localizedDescription)")
         }
     }
 }

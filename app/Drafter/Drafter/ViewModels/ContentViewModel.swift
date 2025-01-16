@@ -11,14 +11,18 @@ import Observation
 
 @Observable
 class ContentViewModel {
-//    @ObservationIgnored @Injected(\.dataService) private var dataService: any IDataService
+    @ObservationIgnored @Injected(\.dataService) private var dataService: any IDataService
     @ObservationIgnored @Injected(\.dbService) private var dbService: any IDatabaseService
     
     var player: Player?
+    var teams: [Team] = []
     
     init() { }
     
     func fetchRandomPlayer() {
-        self.player = dbService.getRandomPlayer()
+        self.player = self.dbService.getRandomPlayer()
+        self.dataService.fetchPlayerTeams(player_id: player!.id) { teamIds in
+            self.teams = self.dbService.getPlayerTeamsFromID(teamIds)
+        }
     }
 }
