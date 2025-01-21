@@ -62,13 +62,13 @@ public class PreviewDatabaseService: IDatabaseService {
         }
     }
     
-    public func getCareerPathAnswers() -> [CommonPlayerInfo] {
+    public func getCareerPathAnswers(_ query: String) -> [CommonPlayerInfo] {
         do {
             var player: CommonPlayerInfo? = nil
             try dbQueue.read { db in
                 player = try CommonPlayerInfo.fetchOne(
                     db,
-                    sql: "SELECT * FROM common_player_info cpi WHERE cpi.from_year > 2000 AND cpi.team_history LIKE '%,%' ORDER BY RANDOM()"
+                    sql: "\(query) AND cpi.team_history LIKE '%,%' ORDER BY RANDOM()"
                 )
             }
             guard let player else { fatalError("Couldn't choose a random player") }
@@ -79,7 +79,7 @@ public class PreviewDatabaseService: IDatabaseService {
             try dbQueue.read { db in
                 possibleAnswers = try CommonPlayerInfo.fetchAll(
                     db,
-                    sql: "SELECT * FROM common_player_info cpi WHERE cpi.from_year > 2000 AND cpi.team_history LIKE '\(formattedTeamHistory)'"
+                    sql: "\(query) AND cpi.team_history LIKE '\(formattedTeamHistory)'"
                 )
             }
             
@@ -98,6 +98,7 @@ public class PreviewDatabaseService: IDatabaseService {
                     sql: """
                         SELECT * FROM common_player_info cpi
                         WHERE cpi.from_year > 2000
+                        AND cpi.team_history LIKE '%,%'
                         ORDER BY cpi.total_games_played DESC
                         LIMIT 100
                         """

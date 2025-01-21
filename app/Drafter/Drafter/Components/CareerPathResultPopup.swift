@@ -23,7 +23,7 @@ struct CareerPathResultPopup: CenterPopup {
                 .multilineTextAlignment(.center)
                 .padding()
             
-            Button("New Game") {
+            Button("Next Player") {
                 Task {
                     self.buttonAction()
                     await dismissAllPopups()

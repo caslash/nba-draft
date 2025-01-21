@@ -17,7 +17,7 @@ public protocol IDatabaseService {
     func getAllTeams() -> [Team]
     func getAllPlayers() -> [CommonPlayerInfo]
     func getRandomPlayer() -> CommonPlayerInfo
-    func getCareerPathAnswers() -> [CommonPlayerInfo]
+    func getCareerPathAnswers(_ query: String) -> [CommonPlayerInfo]
     func getEasyCareerPathAnswers() -> [CommonPlayerInfo]
     func getPlayerTeamsFromId(_ teams: [Team.ID]) -> [Team]
     func getPlayersByTeamId(_ teamId: Team.ID) -> [CommonPlayerInfo]
@@ -106,13 +106,13 @@ public class DatabaseService: IDatabaseService {
         }
     }
     
-    public func getCareerPathAnswers() -> [CommonPlayerInfo] {
+    public func getCareerPathAnswers(_ query: String) -> [CommonPlayerInfo] {
         do {
             var player: CommonPlayerInfo? = nil
             try dbQueue.read { db in
                 player = try CommonPlayerInfo.fetchOne(
                     db,
-                    sql: "SELECT * FROM common_player_info cpi WHERE cpi.from_year > 2000 AND cpi.team_history LIKE '%,%' ORDER BY RANDOM()"
+                    sql: "\(query) AND cpi.team_history LIKE '%,%' ORDER BY RANDOM()"
                 )
             }
             guard let player else { fatalError("Couldn't choose a random player") }
@@ -123,7 +123,7 @@ public class DatabaseService: IDatabaseService {
             try dbQueue.read { db in
                 possibleAnswers = try CommonPlayerInfo.fetchAll(
                     db,
-                    sql: "SELECT * FROM common_player_info cpi WHERE cpi.from_year > 2000 AND cpi.team_history LIKE '\(formattedTeamHistory)'"
+                    sql: "\(query) AND cpi.team_history LIKE '\(formattedTeamHistory)'"
                 )
             }
             
@@ -142,6 +142,7 @@ public class DatabaseService: IDatabaseService {
                     sql: """
                         SELECT * FROM common_player_info cpi
                         WHERE cpi.from_year > 2000
+                        AND cpi.team_history LIKE '%,%'
                         ORDER BY cpi.total_games_played DESC
                         LIMIT 100
                         """

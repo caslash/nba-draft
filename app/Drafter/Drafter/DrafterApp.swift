@@ -12,7 +12,7 @@ import SwiftUI
 struct DrafterApp: App {
     var body: some Scene {
         WindowGroup {
-            CareerPathView()
+            ContentView()
                 .registerPopups(id: .shared) { config in
                     config
                         .center {
