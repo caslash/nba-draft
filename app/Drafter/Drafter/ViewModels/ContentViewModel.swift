@@ -14,15 +14,15 @@ class ContentViewModel {
     @ObservationIgnored @Injected(\.dataService) private var dataService: any IDataService
     @ObservationIgnored @Injected(\.dbService) private var dbService: any IDatabaseService
     
-    var player: Player?
+    var players: [CommonPlayerInfo] = []
     var teams: [Team] = []
     
-    init() { }
+    init() {
+        self.players = self.dbService.getAllPlayers()
+        self.teams = self.dbService.getAllTeams()
+    }
     
-    func fetchRandomPlayer() {
-        self.player = self.dbService.getRandomPlayer()
-        self.dataService.fetchPlayerTeams(player_id: player!.id) { teamIds in
-            self.teams = self.dbService.getPlayerTeamsFromID(teamIds)
-        }
+    func filterPlayers(by team: Team.ID) {
+        self.players = self.dbService.getPlayersByTeamId(team)
     }
 }

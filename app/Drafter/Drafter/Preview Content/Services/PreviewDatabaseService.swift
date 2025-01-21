@@ -1,74 +1,30 @@
 //
-//  DatabaseService.swift
+//  PreviewDatabaseService.swift
 //  Drafter
 //
-//  Created by Cameron S Slash on 1/14/25.
+//  Created by Cameron Slash on 1/17/25.
 //
 
 import Foundation
 import GRDB
 import Observation
 
-public protocol IDatabaseService {
-    var dbQueue: DatabaseQueue! { get }
-    
-    init()
-    
-    func getAllTeams() -> [Team]
-    func getAllPlayers() -> [CommonPlayerInfo]
-    func getRandomPlayer() -> CommonPlayerInfo
-    func getCareerPathAnswers() -> [CommonPlayerInfo]
-    func getEasyCareerPathAnswers() -> [CommonPlayerInfo]
-    func getPlayerTeamsFromId(_ teams: [Team.ID]) -> [Team]
-    func getPlayersByTeamId(_ teamId: Team.ID) -> [CommonPlayerInfo]
-}
-
 @Observable
-public class DatabaseService: IDatabaseService {
-    public var dbQueue: DatabaseQueue!
-    
-    private var dbPath: String {
-        let documentsDirectory = self.fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let destinationPath = documentsDirectory.appendingPathComponent(self.dbName)
-        return destinationPath.path()
-    }
-    private let dbName: String = "nba.sqlite"
-    private let fileManager = FileManager.default
+public class PreviewDatabaseService: IDatabaseService {
+    public var dbQueue: GRDB.DatabaseQueue!
     
     required public init() {
-        self.copyDB()
-        self.setupDB()
-    }
-
-    // MARK: Database Setup
-    private func copyDB() {
         guard let bundlePath = Bundle.main.path(forResource: "nba", ofType: "sqlite") else {
-            fatalError("Database could not be found in bundle")
+            fatalError("Databae could not be found in bundle")
         }
         
-        if !self.fileManager.fileExists(atPath: self.dbPath) {
-            do {
-                print(bundlePath)
-                try self.fileManager.copyItem(atPath: bundlePath, toPath: self.dbPath)
-                print("Database copied to: \(self.dbPath)")
-            } catch {
-                fatalError("Error copying database: \(error.localizedDescription)")
-            }
-        } else {
-            print("Database exists at: \(self.dbPath)")
-        }
-    }
-    
-    private func setupDB() {
         do {
-            self.dbQueue = try DatabaseQueue(path: self.dbPath)
-            print("Database ready at: \(self.dbPath)")
+            self.dbQueue = try DatabaseQueue(path: bundlePath)
+            print("Database ready at: \(bundlePath)")
         } catch {
             fatalError("Database setup failed: \(error.localizedDescription)")
         }
     }
-    
-    // MARK: Database Search Functions
     public func getAllTeams() -> [Team] {
         do {
             return try dbQueue.read { db in

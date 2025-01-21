@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E84F3282D3B78FB003D1E5A /* MijickPopups in Frameworks */ = {isa = PBXBuildFile; productRef = 2E84F3272D3B78FB003D1E5A /* MijickPopups */; };
+		2E84F3612D3B8297003D1E5A /* WrappingStack in Frameworks */ = {isa = PBXBuildFile; productRef = 2E84F3602D3B8297003D1E5A /* WrappingStack */; };
 		683DFA2A2D36DB5500AA5991 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 683DFA292D36DB5500AA5991 /* Factory */; };
 		683DFA412D36E15200AA5991 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 683DFA402D36E15200AA5991 /* GRDB */; };
 /* End PBXBuildFile section */
@@ -28,8 +30,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E84F3282D3B78FB003D1E5A /* MijickPopups in Frameworks */,
 				683DFA2A2D36DB5500AA5991 /* Factory in Frameworks */,
 				683DFA412D36E15200AA5991 /* GRDB in Frameworks */,
+				2E84F3612D3B8297003D1E5A /* WrappingStack in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +78,8 @@
 			packageProductDependencies = (
 				683DFA292D36DB5500AA5991 /* Factory */,
 				683DFA402D36E15200AA5991 /* GRDB */,
+				2E84F3272D3B78FB003D1E5A /* MijickPopups */,
+				2E84F3602D3B8297003D1E5A /* WrappingStack */,
 			);
 			productName = Drafter;
 			productReference = 683DFA092D36B56900AA5991 /* Drafter.app */;
@@ -106,6 +112,8 @@
 			packageReferences = (
 				683DFA282D36DB5500AA5991 /* XCRemoteSwiftPackageReference "Factory" */,
 				683DFA3F2D36E15200AA5991 /* XCRemoteSwiftPackageReference "GRDB" */,
+				2E84F3262D3B78FB003D1E5A /* XCRemoteSwiftPackageReference "Popups" */,
+				2E84F35F2D3B8297003D1E5A /* XCRemoteSwiftPackageReference "swiftui-wrapping-stack" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 683DFA0A2D36B56900AA5991 /* Products */;
@@ -353,6 +361,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2E84F3262D3B78FB003D1E5A /* XCRemoteSwiftPackageReference "Popups" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Mijick/Popups";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		2E84F35F2D3B8297003D1E5A /* XCRemoteSwiftPackageReference "swiftui-wrapping-stack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/diniska/swiftui-wrapping-stack";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
 		683DFA282D36DB5500AA5991 /* XCRemoteSwiftPackageReference "Factory" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hmlongco/Factory";
@@ -372,6 +396,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2E84F3272D3B78FB003D1E5A /* MijickPopups */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2E84F3262D3B78FB003D1E5A /* XCRemoteSwiftPackageReference "Popups" */;
+			productName = MijickPopups;
+		};
+		2E84F3602D3B8297003D1E5A /* WrappingStack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2E84F35F2D3B8297003D1E5A /* XCRemoteSwiftPackageReference "swiftui-wrapping-stack" */;
+			productName = WrappingStack;
+		};
 		683DFA292D36DB5500AA5991 /* Factory */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 683DFA282D36DB5500AA5991 /* XCRemoteSwiftPackageReference "Factory" */;
