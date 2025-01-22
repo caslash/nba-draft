@@ -9,7 +9,7 @@ import MijickPopups
 import SwiftUI
 
 @main
-struct DrafterApp: App {
+struct CareerStreakApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

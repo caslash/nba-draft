@@ -8,7 +8,6 @@
 import Factory
 import MijickPopups
 import SwiftUI
-import WrappingStack
 
 struct CareerPathView: View {
     @State private var viewModel: CareerPathViewModel = .init()

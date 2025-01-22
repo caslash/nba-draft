@@ -13,13 +13,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		683DFA092D36B56900AA5991 /* Drafter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drafter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		683DFA092D36B56900AA5991 /* CareerStreak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CareerStreak.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		683DFA0B2D36B56900AA5991 /* Drafter */ = {
+		683DFA0B2D36B56900AA5991 /* CareerStreak */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Drafter;
+			path = CareerStreak;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -41,7 +41,7 @@
 		683DFA002D36B56800AA5991 = {
 			isa = PBXGroup;
 			children = (
-				683DFA0B2D36B56900AA5991 /* Drafter */,
+				683DFA0B2D36B56900AA5991 /* CareerStreak */,
 				683DFA0A2D36B56900AA5991 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,7 +49,7 @@
 		683DFA0A2D36B56900AA5991 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				683DFA092D36B56900AA5991 /* Drafter.app */,
+				683DFA092D36B56900AA5991 /* CareerStreak.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -57,9 +57,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		683DFA082D36B56900AA5991 /* Drafter */ = {
+		683DFA082D36B56900AA5991 /* CareerStreak */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 683DFA172D36B56A00AA5991 /* Build configuration list for PBXNativeTarget "Drafter" */;
+			buildConfigurationList = 683DFA172D36B56A00AA5991 /* Build configuration list for PBXNativeTarget "CareerStreak" */;
 			buildPhases = (
 				683DFA052D36B56900AA5991 /* Sources */,
 				683DFA062D36B56900AA5991 /* Frameworks */,
@@ -70,16 +70,16 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				683DFA0B2D36B56900AA5991 /* Drafter */,
+				683DFA0B2D36B56900AA5991 /* CareerStreak */,
 			);
-			name = Drafter;
+			name = CareerStreak;
 			packageProductDependencies = (
 				683DFA292D36DB5500AA5991 /* Factory */,
 				683DFA402D36E15200AA5991 /* GRDB */,
 				2E84F3272D3B78FB003D1E5A /* MijickPopups */,
 			);
 			productName = Drafter;
-			productReference = 683DFA092D36B56900AA5991 /* Drafter.app */;
+			productReference = 683DFA092D36B56900AA5991 /* CareerStreak.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -97,7 +97,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 683DFA042D36B56900AA5991 /* Build configuration list for PBXProject "Drafter" */;
+			buildConfigurationList = 683DFA042D36B56900AA5991 /* Build configuration list for PBXProject "CareerStreak" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -116,7 +116,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				683DFA082D36B56900AA5991 /* Drafter */,
+				683DFA082D36B56900AA5991 /* CareerStreak */,
 			);
 		};
 /* End PBXProject section */
@@ -268,11 +268,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Drafter/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"CareerStreak/Preview Content\"";
 				DEVELOPMENT_TEAM = 3S8XC6A264;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Drafter;
+				INFOPLIST_KEY_CFBundleDisplayName = CareerStreak;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -285,7 +285,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Cameron.Slash.Drafter;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Cameron.Slash.CareerStreak;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -304,11 +304,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Drafter/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"CareerStreak/Preview Content\"";
 				DEVELOPMENT_TEAM = 3S8XC6A264;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Drafter;
+				INFOPLIST_KEY_CFBundleDisplayName = CareerStreak;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -321,7 +321,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Cameron.Slash.Drafter;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Cameron.Slash.CareerStreak;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -336,7 +336,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		683DFA042D36B56900AA5991 /* Build configuration list for PBXProject "Drafter" */ = {
+		683DFA042D36B56900AA5991 /* Build configuration list for PBXProject "CareerStreak" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				683DFA152D36B56A00AA5991 /* Debug */,
@@ -345,7 +345,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		683DFA172D36B56A00AA5991 /* Build configuration list for PBXNativeTarget "Drafter" */ = {
+		683DFA172D36B56A00AA5991 /* Build configuration list for PBXNativeTarget "CareerStreak" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				683DFA182D36B56A00AA5991 /* Debug */,
