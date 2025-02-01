@@ -14,7 +14,7 @@ public class PreviewDatabaseService: IDatabaseService {
     public var dbQueue: GRDB.DatabaseQueue!
     
     required public init() {
-        guard let bundlePath = Bundle.main.path(forResource: "nba", ofType: "sqlite") else {
+        guard let bundlePath = Bundle.main.path(forResource: "nba", ofType: "db") else {
             fatalError("Databae could not be found in bundle")
         }
         
@@ -35,23 +35,23 @@ public class PreviewDatabaseService: IDatabaseService {
         }
     }
     
-    public func getAllPlayers() -> [CommonPlayerInfo] {
+    public func getAllPlayers() -> [Player] {
         do {
             return try dbQueue.read { db in
-                try CommonPlayerInfo.fetchAll(db, sql: "SELECT * FROM common_player_info")
+                try Player.fetchAll(db, sql: "SELECT * FROM players")
             }
         } catch {
             fatalError("Error fetching players: \(error.localizedDescription)")
         }
     }
     
-    public func getRandomPlayer() -> CommonPlayerInfo {
+    public func getRandomPlayer() -> Player {
         do {
-            var player: CommonPlayerInfo? = nil
+            var player: Player? = nil
             try dbQueue.read { db in
-                player = try CommonPlayerInfo.fetchOne(
+                player = try Player.fetchOne(
                     db,
-                    sql: "SELECT * FROM common_player_info cpi WHERE cpi.to_year > 1960 ORDER BY RANDOM() "
+                    sql: "SELECT * FROM players p WHERE p.to_year > 1960 ORDER BY RANDOM() "
                 )
             }
             guard let player else { fatalError("Couldn't choose a random player") }
@@ -62,24 +62,24 @@ public class PreviewDatabaseService: IDatabaseService {
         }
     }
     
-    public func getCareerPathAnswers(_ query: String) -> [CommonPlayerInfo] {
+    public func getCareerPathAnswers(_ query: String) -> [Player] {
         do {
-            var player: CommonPlayerInfo? = nil
+            var player: Player? = nil
             try dbQueue.read { db in
-                player = try CommonPlayerInfo.fetchOne(
+                player = try Player.fetchOne(
                     db,
-                    sql: "\(query) AND cpi.team_history LIKE '%,%' ORDER BY RANDOM()"
+                    sql: "\(query) AND p.team_history LIKE '%,%' ORDER BY RANDOM()"
                 )
             }
             guard let player else { fatalError("Couldn't choose a random player") }
             
             let formattedTeamHistory: String = player.team_history.joined(separator: ",")
             
-            var possibleAnswers: [CommonPlayerInfo] = []
+            var possibleAnswers: [Player] = []
             try dbQueue.read { db in
-                possibleAnswers = try CommonPlayerInfo.fetchAll(
+                possibleAnswers = try Player.fetchAll(
                     db,
-                    sql: "\(query) AND cpi.team_history LIKE '\(formattedTeamHistory)'"
+                    sql: "\(query) AND p.team_history LIKE '\(formattedTeamHistory)'"
                 )
             }
             
@@ -89,17 +89,17 @@ public class PreviewDatabaseService: IDatabaseService {
         }
     }
     
-    public func getEasyCareerPathAnswers() -> [CommonPlayerInfo] {
+    public func getEasyCareerPathAnswers() -> [Player] {
         do {
-            var players: [CommonPlayerInfo] = []
+            var players: [Player] = []
             try dbQueue.read { db in
-                players = try CommonPlayerInfo.fetchAll(
+                players = try Player.fetchAll(
                     db,
                     sql: """
-                        SELECT * FROM common_player_info cpi
-                        WHERE cpi.from_year > 2000
-                        AND cpi.team_history LIKE '%,%'
-                        ORDER BY cpi.total_games_played DESC
+                        SELECT * FROM players p
+                        WHERE p.from_year > 2000
+                        AND p.team_history LIKE '%,%'
+                        ORDER BY p.total_games_played DESC
                         LIMIT 100
                         """
                 )
@@ -108,15 +108,15 @@ public class PreviewDatabaseService: IDatabaseService {
             
             let formattedTeamHistory: String = player.team_history.joined(separator: ",")
             
-            var possibleAnswers: [CommonPlayerInfo] = []
+            var possibleAnswers: [Player] = []
             try dbQueue.read { db in
-                possibleAnswers = try CommonPlayerInfo.fetchAll(
+                possibleAnswers = try Player.fetchAll(
                     db,
                     sql: """
-                        SELECT * FROM common_player_info cpi
-                        WHERE cpi.from_year > 2000
-                        AND cpi.team_history LIKE '\(formattedTeamHistory)'
-                        ORDER BY cpi.total_games_played DESC
+                        SELECT * FROM players p
+                        WHERE p.from_year > 2000
+                        AND p.team_history LIKE '\(formattedTeamHistory)'
+                        ORDER BY p.total_games_played DESC
                         LIMIT 100
                         """
                 )
@@ -153,15 +153,15 @@ public class PreviewDatabaseService: IDatabaseService {
         }
     }
     
-    public func getPlayersByTeamId(_ teamId: Team.ID) -> [CommonPlayerInfo] {
+    public func getPlayersByTeamId(_ teamId: Team.ID) -> [Player] {
         do {
-            var players: [CommonPlayerInfo] = []
+            var players: [Player] = []
             try dbQueue.read { db in
-                players = try CommonPlayerInfo.fetchAll(
+                players = try Player.fetchAll(
                     db,
                     sql: """
-                        SELECT * FROM common_player_info cpi
-                        WHERE cpi.team_history LIKE '%\(teamId)%'
+                        SELECT * FROM players p
+                        WHERE p.team_history LIKE '%\(teamId)%'
                         """
                 )
             }

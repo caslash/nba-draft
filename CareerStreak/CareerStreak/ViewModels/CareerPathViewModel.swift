@@ -41,13 +41,13 @@ public enum CareerPathDifficulty: CaseIterable, Identifiable {
     var queryString: String {
         switch self {
         case .easy:
-            "SELECT * FROM common_player_info cpi WHERE cpi.from_year > 2000 AND cpi.rosterstatus = 'Active'"
+            "SELECT * FROM players p WHERE p.from_year > 2000 AND p.isActive"
         case .medium:
-            "SELECT * FROM common_player_info cpi WHERE (cpi.from_year > 2000 OR (cpi.to_year > 2000 AND cpi.to_year < 2010)) AND cpi.total_games_played > 600"
+            "SELECT * FROM players p WHERE (p.from_year > 2000 OR (p.to_year > 2000 AND p.to_year < 2010)) AND p.total_games_played > 600"
         case .hard:
-            "SELECT * FROM common_player_info cpi WHERE cpi.from_year > 1980 AND cpi.from_year < 2005"
+            "SELECT * FROM players p WHERE p.from_year > 1980 AND p.from_year < 2005"
         case .master:
-            "SELECT * FROM common_player_info cpi WHERE cpi.from_year > 1960 AND cpi.from_year < 2000"
+            "SELECT * FROM players p WHERE p.from_year > 1960 AND p.from_year < 2000"
         }
     }
 }
@@ -56,7 +56,7 @@ public enum CareerPathDifficulty: CaseIterable, Identifiable {
 public class CareerPathViewModel {
     @ObservationIgnored @Injected(\.dbService) private var dbService: any IDatabaseService
     
-    @ObservationIgnored public var possibleAnswers: [CommonPlayerInfo] = []
+    @ObservationIgnored public var possibleAnswers: [Player] = []
 
     public var selected_team_history: [Team.ID] = []
     
