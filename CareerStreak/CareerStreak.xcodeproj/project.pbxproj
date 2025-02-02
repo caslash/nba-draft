@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2E84F3282D3B78FB003D1E5A /* MijickPopups in Frameworks */ = {isa = PBXBuildFile; productRef = 2E84F3272D3B78FB003D1E5A /* MijickPopups */; };
+		2ED76FC92D4F1C30001A8469 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 2ED76FC82D4F1C30001A8469 /* SocketIO */; };
 		683DFA2A2D36DB5500AA5991 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 683DFA292D36DB5500AA5991 /* Factory */; };
 		683DFA412D36E15200AA5991 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 683DFA402D36E15200AA5991 /* GRDB */; };
 /* End PBXBuildFile section */
@@ -30,6 +31,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E84F3282D3B78FB003D1E5A /* MijickPopups in Frameworks */,
+				2ED76FC92D4F1C30001A8469 /* SocketIO in Frameworks */,
 				683DFA2A2D36DB5500AA5991 /* Factory in Frameworks */,
 				683DFA412D36E15200AA5991 /* GRDB in Frameworks */,
 			);
@@ -77,6 +79,7 @@
 				683DFA292D36DB5500AA5991 /* Factory */,
 				683DFA402D36E15200AA5991 /* GRDB */,
 				2E84F3272D3B78FB003D1E5A /* MijickPopups */,
+				2ED76FC82D4F1C30001A8469 /* SocketIO */,
 			);
 			productName = Drafter;
 			productReference = 683DFA092D36B56900AA5991 /* CareerStreak.app */;
@@ -110,6 +113,7 @@
 				683DFA282D36DB5500AA5991 /* XCRemoteSwiftPackageReference "Factory" */,
 				683DFA3F2D36E15200AA5991 /* XCRemoteSwiftPackageReference "GRDB" */,
 				2E84F3262D3B78FB003D1E5A /* XCRemoteSwiftPackageReference "Popups" */,
+				2ED76FC72D4F1C30001A8469 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 683DFA0A2D36B56900AA5991 /* Products */;
@@ -365,6 +369,14 @@
 				kind = branch;
 			};
 		};
+		2ED76FC72D4F1C30001A8469 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/socketio/socket.io-client-swift.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 16.1.1;
+			};
+		};
 		683DFA282D36DB5500AA5991 /* XCRemoteSwiftPackageReference "Factory" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hmlongco/Factory";
@@ -388,6 +400,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2E84F3262D3B78FB003D1E5A /* XCRemoteSwiftPackageReference "Popups" */;
 			productName = MijickPopups;
+		};
+		2ED76FC82D4F1C30001A8469 /* SocketIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2ED76FC72D4F1C30001A8469 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */;
+			productName = SocketIO;
 		};
 		683DFA292D36DB5500AA5991 /* Factory */ = {
 			isa = XCSwiftPackageProductDependency;

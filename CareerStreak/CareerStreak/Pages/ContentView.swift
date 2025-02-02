@@ -15,6 +15,10 @@ struct ContentView: View {
                 NavigationLink("Career Path") {
                     CareerPathView()
                 }
+                
+                NavigationLink("Multiplayer") {
+                    MultiplayerView()
+                }
             }
             .navigationTitle("NBA Games")
             .navigationBarTitleDisplayMode(.inline)
